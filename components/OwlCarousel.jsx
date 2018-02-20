@@ -2,10 +2,6 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import "owl.carousel/dist/assets/owl.carousel.min.css";
-import "owl.carousel/dist/assets/owl.theme.default.min.css";
-import "owl.carousel";
-
 
 const Owl_Carousel_Options = {
 
@@ -70,7 +66,7 @@ const Owl_Carousel_Options = {
     stageClass: PropTypes.string,
     stageOuterClass: PropTypes.string,
     navContainerClass: PropTypes.string,
-    navClass: PropTypes.string,
+    navClass: PropTypes.arrayOf(PropTypes.string),
     controlsClass: PropTypes.string,
     dotClass: PropTypes.string,
     dotsClass: PropTypes.string,
@@ -94,7 +90,7 @@ const Owl_Carousel_Options = {
     onLoadedLazy: PropTypes.func,
     onStopVideo: PropTypes.func,
     onPlayVideo: PropTypes.func,
-}
+};
 
 class OwlCarousel extends Component {
     constructor(props, context) {
@@ -114,6 +110,10 @@ class OwlCarousel extends Component {
     }
 
     componentDidMount() {
+        require('owl.carousel/dist/assets/owl.carousel.min.css');
+        require('owl.carousel/dist/assets/owl.theme.default.min.css');
+        require('owl.carousel');
+
         this.owlCarousel = $(this.inst);
         this.owlCarousel.owlCarousel(this.options);
     }
@@ -121,7 +121,7 @@ class OwlCarousel extends Component {
     componentWillReceiveProps(nextProps) {
         this._filterProps(nextProps);
         this.destory();
-	}
+	  }
 
     componentDidUpdate() {
         this.owlCarousel = $(this.inst);
@@ -232,6 +232,6 @@ OwlCarousel.propTypes = Owl_Carousel_Options;
 
 OwlCarousel.defaultProps = {
     className: '',
-}
+};
 
 export default OwlCarousel;
