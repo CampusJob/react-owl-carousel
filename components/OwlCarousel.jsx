@@ -2,6 +2,9 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import "owl.carousel/dist/assets/owl.carousel.min.css";
+import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import "owl.carousel"
 
 const Owl_Carousel_Options = {
 
@@ -110,10 +113,6 @@ class OwlCarousel extends Component {
     }
 
     componentDidMount() {
-        require('owl.carousel/dist/assets/owl.carousel.min.css');
-        require('owl.carousel/dist/assets/owl.theme.default.min.css');
-        require('owl.carousel');
-
         this.owlCarousel = $(this.inst);
         this.owlCarousel.owlCarousel(this.options);
     }
